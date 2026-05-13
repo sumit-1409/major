@@ -1,0 +1,17 @@
+skills,job_role
+"python, machine learning, data analysis, statistics, sql, pandas, numpy, scikit-learn, visualization, tableau, power bi",Data Scientist
+"python, deep learning, tensorflow, pytorch, keras, neural networks, computer vision, llms, generative ai",Machine Learning Engineer
+"python, pytorch, transformers, rag, llms, agentic ai, prompt engineering, mlops, docker",AI Engineer
+"java, spring boot, hibernate, sql, rest api, microservices, git, aws",Software Engineer
+"javascript, react, next.js, node.js, typescript, tailwind, mongodb, express",Full Stack Developer
+"python, django, fastapi, flask, postgresql, docker, kubernetes",Backend Developer
+"docker, kubernetes, aws, terraform, ci/cd, jenkins, prometheus, grafana, python, bash",DevOps Engineer
+"aws, azure, gcp, cloud architecture, terraform, networking, security",Cloud Engineer
+"seo, sem, google analytics, content writing, social media marketing, meta ads, email marketing, hubspot",Digital Marketing Specialist
+"figma, user research, prototyping, wireframing, design systems, accessibility, framer, ai prototyping",UI/UX Designer
+"prompt engineering, llms, generative ai, chatgpt, langchain, agentic systems, python",Prompt Engineer
+"python, sql, machine learning, data analysis, pandas, numpy, tableau",Data Scientist
+"javascript, react, node.js, typescript, next.js, tailwind",Full Stack Developer
+"aws, docker, kubernetes, terraform, ci/cd, python",DevOps Engineer
+"figma, user research, prototyping, wireframing",UI/UX Designer
+"llms, generative ai, prompt engineering, python, langchain",AI Engineer

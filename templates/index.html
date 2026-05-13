@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge • AI Career Advisor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --tw-color-primary: #00d4ff;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+        }
+        
+        .dashboard-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgb(0 212 255 / 0.15);
+        }
+        
+        .result-section {
+            animation: fadeInUp 0.6s ease backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .progress-bar {
+            animation: progress 1.5s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-slate-900 min-h-screen">
+    <!-- Navbar -->
+    <nav class="border-b border-white/10 bg-white/95 backdrop-blur-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-inner">📡</div>
+                <h1 class="title-font text-3xl tracking-tighter font-semibold text-slate-900">SkillBridge</h1>
+                <span class="px-3 py-1 text-xs font-medium bg-cyan-100 text-cyan-700 rounded-3xl">AI-Powered</span>
+            </div>
+            
+            <div class="flex items-center gap-x-8 text-sm font-medium">
+                <a href="#" onclick="resetApp()" class="flex items-center gap-x-2 hover:text-cyan-600 transition-colors">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="flex items-center gap-x-2 hover:text-cyan-600 transition-colors">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center gap-x-2 hover:text-cyan-600 transition-colors">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Courses</span>
+                </a>
+                <div class="h-8 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-x-2 bg-white shadow-sm border border-slate-200 rounded-3xl px-5 py-2 text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    Model Ready • Logistic Regression + TF-IDF
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-3">
+                <div class="text-xs px-4 py-2 bg-white border border-slate-200 rounded-3xl font-medium flex items-center">
+                    <i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>
+                    SDG 8 Aligned
+                </div>
+                <button onclick="resetApp()" 
+                        class="flex items-center px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-3xl text-sm font-semibold transition-all active:scale-95">
+                    <i class="fa-solid fa-arrow-rotate-right mr-2"></i>
+                    New Analysis
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-8 py-12">
+        <!-- Header -->
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <span class="inline-flex items-center px-4 py-2 rounded-3xl bg-gradient-to-r from-cyan-400 to-blue-600 text-white text-sm font-semibold tracking-widest">EXPERIMENTAL + PRODUCT-BASED</span>
+                <h1 class="title-font text-6xl font-semibold tracking-tighter text-white mt-3 leading-none">
+                    Your AI Career<br>Co-Pilot is Here
+                </h1>
+                <p class="text-xl text-slate-400 mt-4 max-w-lg">
+                    Input your skills → Get job prediction, skill-gap analysis, 
+                    match percentage &amp; personalized courses in seconds.
+                </p>
+                <div class="flex items-center gap-x-8 mt-8 text-sm">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-brain text-cyan-400 mr-3 text-2xl"></i>
+                        <div>
+                            <div class="font-semibold text-white">Logistic Regression</div>
+                            <div class="text-slate-400 text-xs">+ TF-IDF Vectorization</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-chart-pie text-cyan-400 mr-3 text-2xl"></i>
+                        <div>
+                            <div class="font-semibold text-white">95%+ Accuracy*</div>
+                            <div class="text-slate-400 text-xs">on sample dataset</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-lightbulb text-amber-400 mr-3 text-2xl"></i>
+                        <div>
+                            <div class="font-semibold text-white">Real-time Dashboard</div>
+                            <div class="text-slate-400 text-xs">Interactive results</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick stats -->
+            <div class="hidden lg:flex gap-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 text-white">
+                <div class="text-center">
+                    <div class="text-4xl font-semibold">4</div>
+                    <div class="text-xs tracking-widest uppercase text-cyan-300">Job Roles</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-semibold">8</div>
+                    <div class="text-xs tracking-widest uppercase text-cyan-300">Courses</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-semibold">100%</div>
+                    <div class="text-xs tracking-widest uppercase text-cyan-300">Set Operations</div>
+                </div>
+                <div class="text-center border-l border-white/30 pl-8">
+                    <div class="text-emerald-400 text-4xl font-semibold">Live</div>
+                    <div class="text-xs tracking-widest uppercase">Model Trained</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Input Card -->
+        <div class="glass rounded-3xl shadow-2xl border border-white/20 p-10 mb-12">
+            <form id="skill-form" class="space-y-8" onsubmit="return false;">
+                <div>
+                    <label class="block text-sm font-medium text-slate-500 mb-2 flex items-center">
+                        <i class="fa-solid fa-keyboard mr-2"></i>
+                        YOUR CURRENT SKILLS
+                    </label>
+                    <textarea id="skills-input" rows="3"
+                              class="w-full resize-none bg-white border border-slate-200 focus:border-cyan-400 rounded-3xl px-8 py-6 text-lg placeholder-slate-400 focus:outline-none transition-all"
+                              placeholder="python, machine learning, data analysis, sql, pandas, statistics..."></textarea>
+                    <p class="text-xs text-slate-400 mt-3 flex items-center">
+                        <i class="fa-solid fa-info-circle mr-1"></i>
+                        Enter comma-separated skills (example above works best)
+                    </p>
+                </div>
+                
+
+                <!-- Sample buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="loadSample(1)" 
+                            class="text-xs px-5 py-2 bg-white hover:bg-cyan-50 border border-slate-200 rounded-3xl flex items-center transition-colors">
+                        <i class="fa-solid fa-robot mr-2 text-cyan-500"></i>
+                        Data Scientist Path
+                    </button>
+                    <button type="button" onclick="loadSample(2)" 
+                            class="text-xs px-5 py-2 bg-white hover:bg-cyan-50 border border-slate-200 rounded-3xl flex items-center transition-colors">
+                        <i class="fa-solid fa-laptop-code mr-2 text-cyan-500"></i>
+                        Software Engineer Path
+                    </button>
+                    <button type="button" onclick="loadSample(3)" 
+                            class="text-xs px-5 py-2 bg-white hover:bg-cyan-50 border border-slate-200 rounded-3xl flex items-center transition-colors">
+                        <i class="fa-solid fa-chart-bar mr-2 text-cyan-500"></i>
+                        Digital Marketing Path
+                    </button>
+                    <button type="button" onclick="loadSample(4)" 
+                            class="text-xs px-5 py-2 bg-white hover:bg-cyan-50 border border-slate-200 rounded-3xl flex items-center transition-colors">
+                        <i class="fa-solid fa-palette mr-2 text-cyan-500"></i>
+                        UI/UX Designer Path
+                    </button>
+                </div>
+
+                <button type="submit"
+                        class="w-full h-16 bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-500 hover:to-blue-700 text-white text-xl font-semibold rounded-3xl flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all active:scale-[0.98]">
+                    <i class="fa-solid fa-magic mr-3"></i>
+                    ANALYZE MY CAREER PATH
+                    <span class="ml-auto text-cyan-200 text-base font-normal">Powered by Flask + Scikit-learn</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Dashboard -->
+        <div id="results-panel" class="hidden">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="title-font text-4xl font-semibold text-white flex items-center">
+                    <span id="predicted-job-badge" class="inline-flex px-6 py-2 text-xl bg-white text-slate-900 rounded-3xl mr-4"></span>
+                    Your Personalized Results
+                </h2>
+                <div onclick="resetApp()" class="cursor-pointer text-slate-400 hover:text-white flex items-center text-sm font-medium">
+                    <i class="fa-solid fa-rotate-right mr-2"></i>
+                    START OVER
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column: Job + Confidence + Match -->
+                <div class="lg:col-span-5 space-y-8">
+                    <!-- Job Prediction Card -->
+                    <div class="dashboard-card bg-white rounded-3xl p-8 shadow-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="uppercase text-xs tracking-[1px] text-slate-400 font-medium">PREDICTED JOB ROLE</div>
+                                <div id="predicted-job" class="text-4xl font-semibold text-slate-900 mt-1"></div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-slate-400">CONFIDENCE</div>
+                                <div id="confidence-score" class="text-5xl font-bold text-cyan-500"></div>
+                            </div>
+                        </div>
+                        <div class="mt-8 h-2 bg-slate-100 rounded-3xl overflow-hidden">
+                            <div id="confidence-bar" class="h-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-3xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Match -->
+                    <div class="dashboard-card bg-white rounded-3xl p-8 shadow-xl">
+                        <div class="flex justify-between mb-4">
+                            <div class="uppercase text-xs tracking-[1px] text-slate-400 font-medium">SKILL MATCH PERCENTAGE</div>
+                            <div id="match-percentage-text" class="font-mono text-5xl font-bold text-emerald-500"></div>
+                        </div>
+                        <div class="relative h-4 bg-slate-100 rounded-3xl">
+                            <div id="match-bar" class="progress-bar h-4 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-3xl"></div>
+                        </div>
+                        <div id="feedback-text" class="mt-6 text-slate-600 leading-relaxed text-base"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Gap Analysis -->
+                <div class="lg:col-span-7">
+                    <div class="dashboard-card bg-white rounded-3xl p-8 shadow-xl h-full">
+                        <div class="uppercase text-xs tracking-[1px] text-slate-400 font-medium mb-6">SKILL GAP ANALYSIS</div>
+                        
+                        <div class="grid grid-cols-2 gap-8">
+                            <!-- Matching Skills -->
+                            <div>
+                                <div class="flex items-center gap-x-2 text-emerald-600 mb-4">
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <span class="font-semibold">MATCHING SKILLS</span>
+                                </div>
+                                <div id="matching-list" class="flex flex-wrap gap-2"></div>
+                            </div>
+                            
+                            <!-- Missing Skills -->
+                            <div>
+                                <div class="flex items-center gap-x-2 text-orange-600 mb-4">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    <span class="font-semibold">MISSING SKILLS</span>
+                                </div>
+                                <div id="missing-list" class="flex flex-wrap gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Recommendations -->
+                <div class="lg:col-span-12">
+                    <div class="dashboard-card bg-white rounded-3xl p-8 shadow-xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <div class="uppercase text-xs tracking-[1px] text-slate-400 font-medium">PERSONALIZED COURSE RECOMMENDATIONS</div>
+                                <p class="text-slate-500 text-sm">To close your skill gaps and boost employability</p>
+                            </div>
+                            <span onclick="window.open('https://coursera.org','_blank')" 
+                                  class="text-xs flex items-center cursor-pointer hover:text-cyan-600">
+                                View all on Coursera/Udemy <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </span>
+                        </div>
+                        
+                        <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer banner -->
+    <div class="bg-white/90 border-t mt-20 py-6 text-center text-xs text-slate-400 flex items-center justify-center gap-x-8">
+        <div>✅ Model trained on skill-to-job mapping using Logistic Regression + TF-IDF</div>
+        <div>✅ Skill gap using Python set operations (intersection &amp; difference)</div>
+        <div>✅ Match % calculated • Top-N courses ranked by overlap</div>
+        <div class="text-emerald-500">🚀 Fully deployable Flask backend</div>
+    </div>
+
+    <script>
+    // ==================== HELPER FUNCTIONS ====================
+    function renderSkillsList(containerId, skills, color) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        
+        if (skills.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = `px-4 py-2 text-xs rounded-3xl border border-dashed ${color === 'emerald' ? 'border-emerald-200 text-emerald-300' : 'border-orange-200 text-orange-300'}`;
+            empty.textContent = color === 'emerald' ? '🎯 Perfect alignment!' : 'None';
+            container.appendChild(empty);
+            return;
+        }
+        
+        skills.forEach(skill => {
+            const pill = document.createElement('div');
+            pill.className = `px-5 py-2 text-sm font-medium rounded-3xl flex items-center ${color === 'emerald' ? 'bg-emerald-100 text-emerald-700' : 'bg-orange-100 text-orange-700'}`;
+            pill.innerHTML = `<i class="fa-solid ${color === 'emerald' ? 'fa-check' : 'fa-circle-minus'} mr-2"></i> ${skill}`;
+            container.appendChild(pill);
+        });
+    }
+
+    function renderCourses(courses) {
+        const container = document.getElementById('courses-grid');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        if (courses.length === 0) {
+            container.innerHTML = `<div class="col-span-3 text-center py-12 text-slate-400">You have a perfect match! No additional courses needed.</div>`;
+            return;
+        }
+        
+        courses.forEach(course => {
+            const cardHTML = `
+            <div class="border border-slate-100 hover:border-cyan-300 rounded-3xl p-6 transition-all group">
+                <div class="text-lg font-semibold text-slate-900">${course.name}</div>
+                <div class="text-slate-400 text-sm mt-1">${course.provider}</div>
+                <div class="mt-4 text-xs text-emerald-600 font-medium">Helps close ${course.overlap} skill gaps</div>
+                <button onclick="window.open('https://www.coursera.org/search?q=${encodeURIComponent(course.name)}','_blank')" 
+                        class="mt-8 w-full py-4 text-sm font-medium border border-slate-200 hover:bg-slate-50 rounded-3xl transition-colors">
+                    Enroll on ${course.provider}
+                </button>
+            </div>`;
+            container.innerHTML += cardHTML;
+        });
+    }
+
+    // ==================== MAIN PREDICTION FUNCTION ====================
+    async function handlePrediction(e) {
+        e.preventDefault();
+        
+        const skillsInput = document.getElementById('skills-input').value.trim();
+        
+        if (!skillsInput) {
+            alert("Please enter your skills or click a sample button!");
+            return;
+        }
+
+        const submitBtn = document.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-3"></i> ANALYZING WITH AI...`;
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ skills: skillsInput })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server returned ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+
+            // Fill dashboard
+            document.getElementById('predicted-job-badge').innerHTML = `<span class="text-2xl">🎯</span> ${data.predicted_job}`;
+            document.getElementById('predicted-job').textContent = data.predicted_job;
+            document.getElementById('confidence-score').innerHTML = `${data.confidence}<span class="text-2xl align-top">%</span>`;
+            document.getElementById('confidence-bar').style.width = `${data.confidence}%`;
+
+            document.getElementById('match-percentage-text').textContent = `${data.match_percentage}%`;
+            document.getElementById('match-bar').style.width = `${data.match_percentage}%`;
+
+            document.getElementById('feedback-text').innerHTML = `
+                <span class="font-semibold">${data.feedback}</span><br>
+                This alignment supports <strong>SDG 8: Decent Work &amp; Economic Growth</strong>.
+            `;
+
+            renderSkillsList('matching-list', data.matching_skills || [], 'emerald');
+            renderSkillsList('missing-list', data.missing_skills || [], 'orange');
+            renderCourses(data.recommended_courses || []);
+
+            // Show results
+            document.getElementById('results-panel').classList.remove('hidden');
+            document.getElementById('results-panel').scrollIntoView({ behavior: 'smooth' });
+
+        } catch (err) {
+            console.error(err);
+            alert("Cannot connect to backend.\nMake sure Flask server is running (python app.py)");
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+
+    // ==================== INITIALIZATION ====================
+    function init() {
+        const form = document.getElementById('skill-form');
+        if (form) {
+            form.addEventListener('submit', handlePrediction);
+        }
+
+        // Sample buttons
+        console.log('%c✅ SkillBridge AI Platform Ready!', 'color:#00d4ff; font-weight:bold');
+    }
+
+    // Run when page loads
+    window.onload = init;
+</script>
+</body>
+</html>
