@@ -80,11 +80,6 @@ Full Stack Developer: javascript, react, node.js, typescript, mongodb
 AI Engineer: python, pytorch, llms, generative ai, prompt engineering
 
 
-📸 Screenshots
-<img src="https://via.placeholder.com/800x450/1e2937/60a5fa?text=SkillBridge+Dashboard" alt="Dashboard">
-<img src="https://via.placeholder.com/800x450/1e2937/60a5fa?text=Job+Prediction+Result" alt="Prediction Result">
-(Add your actual screenshots here)
-
 🔮 Future Scope
 
 Resume upload & parsing (PDF)
